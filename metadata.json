@@ -1,0 +1,7 @@
+{
+  "name": "SINA Sportlab - High Performance Platform",
+  "description": "A high-end, data-driven sport performance and orthoperformance platform for SINA Sportlab, focusing on youth development, injury prevention, and sport physiotherapy.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
