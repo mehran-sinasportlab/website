@@ -1,3 +1,7 @@
+export const config = {
+  runtime: "nodejs",
+};
+
 import { GoogleGenAI } from "@google/genai";
 
 export default async function handler(req, res) {
@@ -24,14 +28,11 @@ export default async function handler(req, res) {
       config: { temperature: 0.6 },
     });
 
-    const text =
-      result?.text ??
-      (typeof result?.response?.text === "function"
-        ? result.response.text()
-        : "");
-
-    return res.status(200).json({ text });
-  } catch (e) {
+    return res.status(200).json({
+      text: result.text,
+    });
+  } catch (error) {
+    console.error("Gemini API error:", error);
     return res.status(500).json({ error: "Gemini error" });
   }
 }
