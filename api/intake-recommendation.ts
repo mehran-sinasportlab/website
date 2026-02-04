@@ -31,8 +31,11 @@ export default async function handler(req, res) {
     return res.status(200).json({
       text: result.text,
     });
-  } catch (error) {
-    console.error("Gemini API error:", error);
-    return res.status(500).json({ error: "Gemini error" });
+   } catch (e: any) {
+    console.error("Gemini error:", e?.message || e);
+    return res.status(500).json({
+      error: "Gemini error",
+      details: e?.message || String(e),
+    });
   }
-}
+
